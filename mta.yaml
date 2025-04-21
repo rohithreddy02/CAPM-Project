@@ -1,0 +1,38 @@
+_schema-version: 3.3.0
+ID: capmdemo
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: capmdemo-srv
+  type: nodejs
+  path: gen/srv
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    instances: 1
+  build-parameters:
+    builder: npm-ci
+- name: db
+  type: hdb
+  path: db
+  requires:
+  - name: hdi_db
+resources:
+- name: hdi_db
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: CAPMDEMO
+  properties:
+    hdi-container-name: ${service-name}
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

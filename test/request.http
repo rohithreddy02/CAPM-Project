@@ -1,0 +1,151 @@
+
+GET http://localhost:4004/myservice/Customer
+
+###
+
+POST http://localhost:4004/myservice/Customer
+Content-Type: application/json
+
+{
+  "name": "Dallas  ",
+  "email": "Dallas@example.com",
+  "order": [
+    {
+      "date": "2025-04-10",
+      "orderItem": [
+        {
+          "product": "Monitor",
+          "quantity": 5,
+          "price": 100000
+        }
+      ]
+    }
+  ]
+}
+
+####
+
+
+###
+PATCH http://localhost:4004/myservice/Order(a2af4968-1bb9-4b52-8d05-fc55c6e2f4bd)
+Content-Type: application/json
+
+{
+  "date": "2025-04-15"
+}
+
+###
+DELETE http://localhost:4004/myservice/Customer(1)
+
+
+###
+POST http://localhost:4004/myservice/Customer
+Content-Type: application/json
+
+{
+  "name": "Dallas",
+  "email": "Dallas@example.com"
+}
+
+###
+
+GET http://localhost:4004/myservice/Order
+
+
+####
+GET http://localhost:4004/myservice/Customer?$expand=order($expand=orderItem)
+
+
+
+###
+POST http://localhost:4004/myservice/Order
+Content-Type: application/json
+
+{
+  "date": "2025-04-21",
+  "customer_ID": "8aef165b-af48-4761-b7b5-a5b34bc7b7ea",
+  "orderItem": [
+    {
+      "product": "Keyboard",
+      "quantity": 2,
+      "price": 1500
+    },
+    {
+      "product": "Mouse",
+      "quantity": 3,
+      "price": 800
+    }
+  ]
+}
+
+###
+GET http://localhost:4004/myservice/Order
+
+###
+GET http://localhost:4004/myservice/OrderItem
+
+
+###
+# GET will for both
+#GET call for composition
+GET http://localhost:4004/myservice/Customer?$expand=order($expand=orderItem)
+
+###
+# GET call for association
+GET http://localhost:4004/myservice/Order?$expand=customer
+
+
+# POST will for only for composition(deep insert) and Because associations are references, not embedded data(POST is meant for creating new resources, not linking existing ones)
+
+#POST call for composition
+POST http://localhost:4004/myservice/Customer
+Content-Type: application/json
+
+
+{
+  "name": "John",
+  "email": "john@example.com",
+  "order": [
+    {
+      "date": "2025-04-21",
+      "orderItem": [
+        {
+          "product": "Monitor",
+          "quantity": 1,
+          "price": 12000
+        }
+      ]
+    }
+  ]
+}
+
+
+
+## sequences
+###
+DELETE http://localhost:4004/myservice/Order/ORD004
+
+###
+GET http://localhost:4004/myservice/OrderItem
+
+
+####
+POST http://localhost:4004/myservice/Order
+Content-Type: application/json
+
+{
+  "customer_ID": "1e57f05e-bf09-41fa-9c3e-92b82e28b08d",
+  "date": "2025-04-21", 
+  "orderItem": [
+    {
+      "product": "Wireless Mouse",
+      "quantity": 2,
+      "price": 850
+    },
+    {
+      "product": "Laptop Stand",
+      "quantity": 1,
+      "price": 1450
+    }
+  ]
+}
