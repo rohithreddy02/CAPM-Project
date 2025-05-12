@@ -6,9 +6,14 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^8",
+    "@sap-cloud-sdk/core": "^1.54.2",
+    "@sap/cds": "^8.9.2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.1",
     "@sap/hana-client": "^2.24.24",
-    "express": "^4"
+    "@sap/xssec": "^4.6.0",
+    "express": "^4",
+    "jwt-decode": "^4.0.0",
+    "nodemailer": "^6.10.1"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.10.0",
@@ -16,7 +21,9 @@
     "@sap/cds-dk": "^8"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-Demo": "cds watch --open Demo/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-ui5": "cds watch --open ui5/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "build": {
@@ -26,6 +33,12 @@
       "deploy-format": "hdbtable"
     },
     "requires": {
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "auth": {
+        "kind": "jwt-auth"
+      },
       "db": {
         "kind": "hana"
       }

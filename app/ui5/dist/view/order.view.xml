@@ -1,0 +1,23 @@
+<mvc:View controllerName="ui5.controller.order"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="{newOrder>/headerText}" showNavButton="true"
+        navButtonPress="onNavBack" >
+        <content>
+            <VBox>
+                <HBox justifyContent="SpaceBetween" class="sapUiSmallMargin">
+                    <Title text="Orders"></Title>
+                    <Button text="Create Order" type="Emphasized" press="onCreateOrder" />
+                </HBox>
+                <List id="orderTable" items="{ path: '/Order' }"  mode="Delete" delete="onDeleteOrder">
+                    <StandardListItem
+                        title="{ID}"
+                        description="Total Price: ₹{TOTALPRICE}"
+                        type="Navigation"
+                        press=".onShowOrderItem" />
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

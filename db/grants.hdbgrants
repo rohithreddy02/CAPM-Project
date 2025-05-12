@@ -1,0 +1,14 @@
+{
+    "trial-service":{
+        "object_owner": {
+            "roles":[
+                "SYNONYDEMO_ALL"
+            ]
+        },
+        "application_user": {
+            "roles": [
+                "SYNONYDEMO_ALL"
+            ]
+        }
+    }
+}

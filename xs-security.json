@@ -1,0 +1,48 @@
+{
+  "xsappname": "capmdemo",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin access"
+    },
+    {
+      "name": "$XSAPPNAME.Customer",
+      "description": "Customer access"
+    },
+    {
+      "name": "$XSAPPNAME.DeliveryAgent",
+      "description": "Delivery Agent access"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator Role",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "Customer",
+      "description": "Customer Role",
+      "scope-references": [
+        "$XSAPPNAME.Customer"
+      ]
+    },
+    {
+      "name": "DeliveryAgent",
+      "description": "Delivery Agent Role",
+      "scope-references": [
+        "$XSAPPNAME.DeliveryAgent"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*trial.applicationstudio.cloud.sap/**",
+      "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  }
+}

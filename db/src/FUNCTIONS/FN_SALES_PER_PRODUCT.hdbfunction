@@ -1,0 +1,13 @@
+FUNCTION "FN_SALES_PER_PRODUCT"()
+    RETURNS TABLE (
+        product NVARCHAR(50),
+        total_sales DECIMAL(20,2)
+    )
+    LANGUAGE SQLSCRIPT
+    SQL SECURITY INVOKER AS
+BEGIN
+    RETURN  
+        SELECT product, SUM(quantity * price) as total_sales
+        FROM "DATA_ORDERITEMS"
+        GROUP BY product;
+END;

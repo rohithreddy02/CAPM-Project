@@ -1,0 +1,52 @@
+<mvc:View controllerName="ui5.controller.adminDashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <customHeader>
+    		<Toolbar>
+        		<SearchField  width="auto" placeholder="Search..." liveChange="onSearch" />
+        		<ToolbarSpacer />
+        		<Button icon="sap-icon://add" text="Create" press="onCreate" />
+        		<Button icon="sap-icon://edit" text="Update" press="onUpdate" />
+        		<Button icon="sap-icon://delete" text="Delete" press="onDelete" />
+    		</Toolbar>
+		</customHeader>
+		<Table id="customerTable"  mode="SingleSelectLeft" items="{/Customer}" includeItemInSelection="true" sticky="ColumnHeaders" alternateRowColors="true" headerText="{NewCustomer>/headerText}"> 
+			<columns>
+				<Column>
+					<header>
+						<Label text="Name" ></Label>
+					</header>
+				</Column>
+				<Column >
+					<header>
+						<Label text="Email"></Label>
+					</header>
+				</Column>
+				<Column >
+					<header>
+						<Label text="Contact Number"></Label>
+					</header>
+				</Column>
+				<Column hAlign="End">
+					<header>
+						<Label ></Label>
+					</header>
+				</Column>
+			</columns>
+			<items >
+				<ColumnListItem>
+					<cells>
+						<Text text="{name}"></Text>
+						<Text text="{email}"></Text>
+						<Text text="+91 {contactNumber}" ></Text>
+						<Button icon="sap-icon://navigation-right-arrow" press=".onOrderView"></Button>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+    </Page>
+</mvc:View>

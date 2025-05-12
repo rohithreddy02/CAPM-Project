@@ -1,0 +1,140 @@
+<mvc:View controllerName="ui5.controller.adminDashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:mdc="sap.ui.mdc">
+
+    <Page id="page" title="Admin Dashboard">
+        <content>
+            <Panel headerText="Customer Overview" expandable="false" class="sapUiMediumMarginBottom">
+                <VBox class="sapUiSmallMargin">
+                    
+                    <HBox justifyContent="Start" alignItems="Center" class="sapUiTinyMarginBottom">
+                        <GenericTile header="Total Customers" class="sapUiTinyMarginEnd">
+                            <TileContent>
+                                <NumericContent value="{NewCustomer>/headerText}"  />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile header="Total Orders" class="sapUiTinyMarginEnd">
+                            <TileContent>
+                                <NumericContent value="{NewCustomer>/totalOrders}" />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile header="Avgerage Order Value" class="sapUiTinyMarginEnd">
+                            <TileContent unit="INR">
+                                <NumericContent value="{NewCustomer>/avgOrderValue}"  truncateValueTo="8" />
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile header="Orders Delivered" class="sapUiTinyMarginEnd">
+                            <TileContent>
+                                <NumericContent value="{NewCustomer>/ordersDelivered}" />
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile header="Pending Orders" class="sapUiTinyMarginEnd">
+                            <TileContent>
+                                <NumericContent value="{NewCustomer>/pendingOrders}" />
+                            </TileContent>
+                        </GenericTile>
+                    </HBox>
+
+                    
+                </VBox>
+            </Panel>
+            <!-- <mdc:FilterBar>
+    
+    <mdc:filterItems>
+        <mdc:FilterField
+            label="Search"
+            conditions="{}"
+            placeholder="Type name or email..."
+            liveChange="onSearch" />
+    </mdc:filterItems>
+</mdc:FilterBar> -->
+
+            <OverflowToolbar class="sapUiTinyMarginTop">
+            <ToolbarSpacer />
+
+                        <VBox class="sapUiSmallMarginEnd">
+                            <SearchField width="300px" placeholder="Type name or email..." liveChange="onSearch" />
+                        </VBox>
+
+                        
+
+
+                        <Button icon="sap-icon://add" text="Create" press="onCreate"
+                                type="Emphasized" class="sapUiTinyMarginEnd" tooltip="Create new customer" />
+                        <Button icon="sap-icon://edit" text="Update" press="onUpdate"
+                                class="sapUiTinyMarginEnd" tooltip="Update selected customer" />
+                        <Button icon="sap-icon://delete" text="Delete" press="onDelete"
+                                type="Negative" tooltip="Delete selected customer" />
+            </OverflowToolbar>
+
+
+
+            <Panel headerText="Customer List" expandable="false" class="sapUiMediumMarginBottom">
+				<!-- <OverflowToolbar class="sapUiTinyMarginTop">
+
+                        <VBox class="sapUiSmallMarginEnd">
+                            <SearchField width="300px" placeholder="Type name or email..." liveChange="onSearch" />
+                        </VBox>
+
+                        <ToolbarSpacer />
+
+
+                        <Button icon="sap-icon://add" text="Create" press="onCreate"
+                                type="Emphasized" class="sapUiTinyMarginEnd" tooltip="Create new customer" />
+                        <Button icon="sap-icon://edit" text="Update" press="onUpdate"
+                                class="sapUiTinyMarginEnd" tooltip="Update selected customer" />
+                        <Button icon="sap-icon://delete" text="Delete" press="onDelete"
+                                type="Negative" tooltip="Delete selected customer" />
+                </OverflowToolbar> -->
+                <Table id="customerTable"
+                    items="{/Customer}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    mode="SingleSelectMaster"
+                    sticky="ColumnHeaders"
+                    alternateRowColors="true"
+                    includeItemInSelection="true">
+
+                    <columns>
+                        <Column>
+                            <Text text="Name" />
+                        </Column>
+                        <Column>
+                            <Text text="Email" />
+                        </Column>
+                        <Column>
+                            <Text text="Contact Number" />
+                        </Column>
+                        <Column>
+                            <Text text="Actions" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ObjectIdentifier title="{name}" />
+                                <Text text="{email}" />
+                                <Text text="+91 {contactNumber}" />
+                                <Button icon="sap-icon://navigation-right-arrow" press=".onOrderView" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+
+            <Toolbar design="Auto" style="Clear" class="sapiSmallMarginTop sapUiTinyMarginBottom">
+                <Text text="© 2025 Sales Tracker" />
+            </Toolbar>
+
+        </content>
+    </Page>
+</mvc:View>
+
+

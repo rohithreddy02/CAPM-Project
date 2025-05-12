@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog title="Add New Order Item">
+        <f:SimpleForm>
+            <f:content>
+                
+                <Label text="Product" />
+                <Input 
+                    value="{orderItemForm>/product}" 
+                    valueState="{orderItemForm>/productValueState}" 
+                    valueStateText="{orderItemForm>/productValueStateText}" 
+                    required="true"
+                />
+
+                <Label text="Quantity" />
+                <Input 
+                    value="{orderItemForm>/quantity}" 
+                    valueState="{orderItemForm>/quantityValueState}" 
+                    valueStateText="{orderItemForm>/quantityValueStateText}" 
+                    type="Number" 
+                    required="true"
+                />
+
+                <Label text="Price" />
+                <Input 
+                    value="{orderItemForm>/price}" 
+                    valueState="{orderItemForm>/priceValueState}" 
+                    valueStateText="{orderItemForm>/priceValueStateText}" 
+                    type="Number" 
+                    required="true"
+                />
+            </f:content>
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="Save" type="Emphasized" press="onSaveOrderItem" />
+            <Button text="Cancel" press="onCancelOrderItem" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

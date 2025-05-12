@@ -1,0 +1,24 @@
+<mvc:View controllerName="ui5.controller.order"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="{newOrder>/headerText}" 
+      showNavButton="{= ${userModel>/role} === 'Admin' }" 
+      navButtonPress="onNavBack" >
+        <content>
+            <VBox>
+                <HBox justifyContent="SpaceBetween" class="sapUiSmallMargin">
+                    <Title text="Orders"></Title>
+                    <Button icon="" text="Create Order" type="Emphasized" press="onCreateOrder"  visible="{= ${userModel>/role} === 'Customer' }"/>
+                </HBox>
+                <List id="orderTable" items="{ path: '/Order' }" >
+                    <StandardListItem
+                        title="{ID}"
+                        description="Total Price: ₹{TOTALPRICE}"
+                        type="Navigation"
+                        press=".onShowOrderItem" />
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

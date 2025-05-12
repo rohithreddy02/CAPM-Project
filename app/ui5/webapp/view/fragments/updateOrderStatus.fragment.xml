@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <m:Dialog title="Update Order Status" id="updateOrderStatusDialog">
+        <f:SimpleForm>
+            <f:content>
+                <m:Label text="Status" />
+                <m:Select id="statusSelect" selectedKey="{/selectedStatus}">
+                    <core:Item key="Packing" text="Packing" />
+                    <core:Item key="Shipped" text="Shipped" />
+                </m:Select>
+            </f:content>
+        </f:SimpleForm>
+
+        <m:buttons>
+            <m:Button text="Save" type="Emphasized" press="onUpdateOrderStatusSave" />
+            <m:Button text="Cancel" press="onUpdateOrderStatusCancel" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

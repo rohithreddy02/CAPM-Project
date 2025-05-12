@@ -1,0 +1,67 @@
+<mvc:View controllerName="ui5.controller.orderItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap">
+
+    <Page title="Order Items" showHeader="false">
+        <uxap:ObjectPageLayout>
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+
+                    <uxap:actions>
+                        <Button icon="sap-icon://decline" press="onNavBack" tooltip="Back" type="Transparent"/>
+                    </uxap:actions>
+
+                    <uxap:heading>
+                        <Title text="Order Items" level="H1" />
+                    </uxap:heading>
+
+                    <uxap:content>
+                        <HBox class="sapUiSmallMargin">
+                            <VBox>
+                                <ObjectNumber
+                                    number="Total Order Value: ₹{order>/TOTALPRICE}"
+                                    emphasized="true"
+                                />
+                            </VBox>
+                        </HBox>
+                    </uxap:content>
+
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+
+
+            <uxap:sections>
+                <uxap:ObjectPageSection title="Items">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection>
+                            <VBox class="sapUiSmallMargin">
+                                <List
+                                    id="orderItemList"
+                                    items="{orderItem>/}"
+                                    noDataText="No Order Items Found">
+
+                                    <ObjectListItem
+                                        title="{orderItem>product}"
+                                        number="₹{= ${orderItem>quantity} * ${orderItem>price} }"
+                                        numberUnit="Total"
+                                        icon="sap-icon://product"
+                                        press="onItemPress"
+                                    >
+                                        <attributes>
+                                            <ObjectAttribute text="Price: ₹{orderItem>price}" />
+                                            <ObjectAttribute text="Qty: {orderItem>quantity}" />
+                                        </attributes>
+                                    </ObjectListItem>
+
+                                </List>
+                            </VBox>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+            </uxap:sections>
+
+        </uxap:ObjectPageLayout>
+    </Page>
+
+</mvc:View>

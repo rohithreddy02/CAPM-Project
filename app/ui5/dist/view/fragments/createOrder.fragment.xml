@@ -1,0 +1,107 @@
+<!-- <core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog title="Create a New Order">
+        <f:SimpleForm>
+            <f:content>
+
+
+                
+                <Label text="Product" />
+                <Input 
+                    type="Text" 
+                    required="true" 
+                    value="{newOrder>/Product}"
+                    valueState="{newOrder>/ProductValueState}" 
+                    valueStateText="{newOrder>/ProductValueStateText}" />
+
+
+                <Label text="Quantity" />
+                <Input 
+                    type="Number" 
+                    required="true" 
+                    value="{newOrder>/Quantity}"
+                    valueState="{newOrder>/QuantityValueState}" 
+                    valueStateText="{newOrder>/QuantityValueStateText}" />
+
+
+                <Label text="Price" />
+                <Input 
+                    type="Number" 
+                    required="true" 
+                    value="{newOrder>/Price}"
+                    valueState="{newOrder>/PriceValueState}" 
+                    valueStateText="{newOrder>/PriceValueStateText}" />
+
+            </f:content>
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="Save" type="Emphasized" press="onSaveOrder" />
+            <Button text="Cancel" press="onCancelOrder" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition> -->
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog title="Create a New Order">
+        <f:SimpleForm>
+            <f:content>
+
+                <Label text="Product" />
+                <Input 
+                    type="Text" 
+                    required="true" 
+                    value="{newOrder>/product}"
+                    valueState="{newOrder>/ProductValueState}"
+                    valueStateText="{newOrder>/ProductValueStateText}" />
+
+                <Label text="Quantity" />
+                <Input 
+                    type="Number" 
+                    required="true" 
+                    value="{newOrder>/quantity}"
+                    valueState="{newOrder>/QuantityValueState}"
+                    valueStateText="{newOrder>/QuantityValueStateText}" />
+
+                <Label text="Price" />
+                <Input 
+                    type="Number" 
+                    required="true" 
+                    value="{newOrder>/price}"
+                    valueState="{newOrder>/PriceValueState}"
+                    valueStateText="{newOrder>/PriceValueStateText}" />
+
+                <Button 
+                    text="Add Item" 
+                    type="Emphasized" 
+                    press="onAddItem" />
+
+                <Label text="Order Items" />
+                <List
+                    items="{newOrder>/OrderItems}">
+                    <StandardListItem
+                        title="{newOrder>product}"
+                        description="Quantity: {newOrder>quantity}, Price: {newOrder>price}"
+                        type="Active"
+                        press="onDeleteItem"/>
+                </List>
+
+            </f:content>
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="Save Order" type="Emphasized" press="onSaveOrder" />
+            <Button text="Cancel" press="onCancelOrder" />
+        </buttons>
+    </Dialog>
+
+</core:FragmentDefinition>
+

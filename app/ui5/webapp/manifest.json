@@ -1,0 +1,155 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "ui5",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.3",
+      "toolsId": "a6154069-4cdf-475f-881f-d053f49cd293"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/myservice",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.135.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ui5.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "fcl",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "ui5.view",
+        "async": true,
+        "viewPath": "ui5.view"
+      },
+      "routes": [
+        {
+          "name": "RouteadminDashboard",
+          "pattern": ":?query:",
+          "target": [
+            "TargetadminDashboard"
+          ]
+        },
+        {
+          "name": "order",
+          "pattern": "order/{customerId}/{customerName}",
+          "target": "order"
+        },
+        {
+          "name":"orderItem",
+          "pattern": "orderItem/{customerId}/{customerName}/{orderId}",
+          "target":"orderItem"
+        },
+        {
+          "name": "delivery",
+          "pattern": "delivery",
+          "target":"delivery"
+        }
+      ],
+      "targets": {
+        "TargetadminDashboard": {
+          "id": "adminDashboard",
+          "name": "adminDashboard",
+          "controlId":"fcl",
+          "controlAggregation":"beginColumnPages"
+        },
+        "order": {
+          "id": "order",
+          "name":"order",
+          "controlId":"fcl",
+          "controlAggregation":"beginColumnPages"
+        },
+        "orderItem":{
+          "id":"orderItem",
+          "name":"orderItem",
+          "controlId":"fcl",
+          "controlAggregation":"midColumnPages"
+        },
+        "delivery":{
+          "id": "delivery",
+          "name": "delivery",
+          "controlId":"fcl"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "ui5.view.App",
+      "type": "XML",
+      "id": "fcl",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "xs-security"
+  }
+}

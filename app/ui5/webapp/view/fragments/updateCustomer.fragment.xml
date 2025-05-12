@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    
+    <m:Dialog title="Update Form">
+        <f:SimpleForm>
+            <f:content>
+                <m:Label text="Name" />
+                <m:Input 
+                    value="{NewUpdatedCustomer>/name}" 
+                    required="true" 
+                    placeholder="Enter Name" 
+                    valueState="{NewUpdatedCustomer>/NameValueState}" 
+                    valueStateText="{NewUpdatedCustomer>/NameValueStateText}" />
+
+                <m:Label text="Email" />
+                <m:Input 
+                    value="{NewUpdatedCustomer>/email}" 
+                    required="true" 
+                    placeholder="Enter Email" 
+                    valueState="{NewUpdatedCustomer>/EmailValueState}" 
+                    valueStateText="{NewUpdatedCustomer>/EmailValueStateText}" />
+
+                <m:Label text="Contact Number" />
+                <m:Input 
+                    value="{NewUpdatedCustomer>/contactNumber}" 
+                    required="true" 
+                    placeholder="Enter Contact Number" 
+                    valueState="{NewUpdatedCustomer>/ContactNumberValueState}" 
+                    valueStateText="{NewUpdatedCustomer>/ContactNumberValueStateText}" />
+            </f:content>
+        </f:SimpleForm>
+        <m:buttons>
+            <m:Button text="Save" type="Emphasized" press="onUpdateSave" />
+            <m:Button text="Cancel" press="onUpdateCancel" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

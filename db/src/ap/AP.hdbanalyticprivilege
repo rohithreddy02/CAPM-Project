@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="AP" privilegeType="SQL_ANALYTIC_PRIVILEGE" schemaVersion="1.1">
+    <descriptions defaultDescription="AP"/>
+    <securedModels>
+      <modelUri>CV_ORDER_SUMMARY</modelUri>
+    </securedModels>
+
+<whereSql>CUSTOMER_ID='1e57f05e-bf09-41fa-9c3e-92b82e28b08d'</whereSql>
+</Privilege:analyticPrivilege>

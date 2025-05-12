@@ -1,0 +1,126 @@
+<mvc:View controllerName="ui5.controller.orderItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap">
+
+    <Page showHeader="false">
+        <uxap:ObjectPageLayout>
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:actions>
+                        <Button
+                            text="Cancel Order"
+                            icon="sap-icon://cancel"
+                            press="onCancelOrder"
+                            tooltip="Cancel this order"
+                            visible="{= ${userModel>/role} === 'Customer' &amp;&amp; ${order>/status} !== 'Cancelled' }"
+                            type="Reject"
+                            class="sapUiSmallMarginEnd"
+                        />
+                        <Button
+                            text="Update Status"
+                            icon="sap-icon://edit"
+                            press="onUpdateStatus"
+                            tooltip="Update the status of this order"
+                            visible="{= ${userModel>/role} === 'Admin' &amp;&amp; ${order>/status} !== 'Delivered' &amp;&amp; ${order>/status} !== 'Cancelled' }"
+                            type="Emphasized"
+                            class="sapUiSmallMarginEnd"
+                        />
+                        <Button
+                            icon="sap-icon://decline"
+                            press="onNavBack"
+                            tooltip="Back"
+                            type="Transparent"
+                        />
+                    </uxap:actions>
+
+
+                    <uxap:heading>
+                        <Title text="Order Items" level="H1" />
+                    </uxap:heading>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+
+
+            <uxap:sections>
+                <uxap:ObjectPageSection title="Order Information">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection >
+                            <VBox class="sapUiSmallMargin">
+
+                                <HBox class="sapUiSmallMarginBottom">
+                                    <ObjectIdentifier
+                                        text="Order ID: {order>/ID}"
+                                        class="sapUiSmallMarginTop"
+                                    />
+                                </HBox>
+
+
+                                <HBox class="sapUiSmallMarginBottom">
+                                    
+                                    <ObjectStatus
+                                        text="Order Status: {order>/status}"
+                                        state="{= ${order>/status} === 'Cancelled' ? 'Error' : ${order>/status} === 'Delivered' ? 'Success' : 'Information' }"
+                                        class="sapUiSmallMarginTop"
+                                    />
+                                </HBox>
+
+
+                                <HBox class="sapUiSmallMarginBottom">
+                                    <ObjectIdentifier
+                                        text="Ordered Date: {path: 'order>/date', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long' }}"
+                                        class="sapUiSmallMarginTop"
+                                    />
+                                </HBox>
+
+                                <HBox class="sapUiSmallMarginBottom">
+                                    <ObjectIdentifier
+                                        text="Delivery Date: {path: 'order>/deliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long' }}"
+                                        class="sapUiSmallMarginTop"
+                                    />
+                                </HBox>
+                                <HBox class="sapUiSmallMarginBottom">
+                                    <ObjectIdentifier
+                                        text="Total Price: {order>/TOTALPRICE}"
+                                        class="sapUiSmallMarginTop"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+
+                <uxap:ObjectPageSection title="Items">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection>
+                            <VBox class="sapUiSmallMargin">
+                                <List
+                                    id="orderItemList"
+                                    items="{orderItem>/}"
+                                    noDataText="No Order Items Found"
+                                    class="sapUiSmallMarginTop"
+                                >
+                                    <ObjectListItem
+                                        title="{orderItem>product}"
+                                        number="₹{= ${orderItem>quantity} * ${orderItem>price} }"
+                                        numberUnit="Total"
+                                        icon="sap-icon://product"
+                                    >
+                                        <attributes>
+                                            <ObjectAttribute text="Price: ₹{orderItem>price}" />
+                                            <ObjectAttribute text="Qty: {orderItem>quantity}" />
+                                        </attributes>
+                                    </ObjectListItem>
+                                </List>
+                            </VBox>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+            </uxap:sections>
+
+        </uxap:ObjectPageLayout>
+    </Page>
+
+</mvc:View>

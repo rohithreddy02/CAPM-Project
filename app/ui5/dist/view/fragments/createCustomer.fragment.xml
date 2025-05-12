@@ -1,0 +1,43 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:m="sap.m"> 
+
+    <m:Dialog id="CreateDialog" title="Create Customer">
+        <f:SimpleForm>
+            <f:content>
+                <m:Label text="Name"/>
+                <m:Input 
+                    required="true" 
+                    placeholder="Enter Name" 
+                    value="{NewCustomer>/Name}" 
+                    valueState="{NewCustomer>/NameValueState}" 
+                    valueStateText="{NewCustomer>/NameValueStateText}" />
+
+
+                <m:Label text="Email"/>
+                <m:Input 
+                        required="true" 
+                        placeholder="Enter Email" 
+                        value="{NewCustomer>/Email}" 
+                        valueState="{NewCustomer>/EmailValueState}" 
+                        valueStateText="{NewCustomer>/EmailValueStateText}"/>
+
+                <m:Label text="Contact Number"/>
+                <m:Input 
+                        required="true" 
+                        placeholder="Enter Contact Number" 
+                        value="{NewCustomer>/ContactNumber}" 
+                        valueState="{NewCustomer>/ContactNumberValueState}" 
+                        valueStateText="{NewCustomer>/ContactNumberValueStateText}"/>
+            </f:content>
+        </f:SimpleForm>
+
+        <m:buttons>
+            <m:Button text="Save" type="Emphasized" press="onSave"/>
+            <m:Button text="Cancel" press="onCancel"/>
+        </m:buttons>
+    </m:Dialog>
+
+</core:FragmentDefinition>

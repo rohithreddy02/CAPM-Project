@@ -1,0 +1,14 @@
+{
+    "Authors": {
+        "target": {
+            "object": "DB_AUTHORS",
+            "schema": "SYNONYMDEMO"
+        }
+    },
+    "Books": {
+        "target": {
+            "object": "DB_BOOKS",
+            "schema": "SYNONYMDEMO"
+        }
+    }
+}

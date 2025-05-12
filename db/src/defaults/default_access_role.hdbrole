@@ -1,0 +1,21 @@
+{
+    "role": {
+        "name": "default_access_role",
+        "schema_roles": [
+            {
+                
+                "names": [
+                    "default_permissions_role"
+                ]
+            }
+        ],
+        "schema_analytic_privileges": [
+            {
+               
+                "privileges": [
+                    "AP"
+                ]
+            }
+        ]
+    }
+}
